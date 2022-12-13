@@ -6,6 +6,26 @@ const cookieparser = require("cookie-parser");
 const passport = require("passport");
 const cors = require("cors");
 
+// redirected client side to run on server
+const path = require("path");
+const _dirname = path.dirname("");
+const buildPath = path.join(_dirname, "../client/build");
+
+app.use(express.static(buildPath));
+
+app.get("/*", function (req, res) {
+  res.sendFile(
+    path.join(__dirname, "../client/build/index.html"),
+    function (err) {
+      if (err) {
+        res.status(500).send(err);
+      }
+    }
+  );
+});
+
+// 
+
 // middleware init
 app.use(express.json());
 app.use(cookieparser());
