@@ -9,7 +9,7 @@ const cors = require("cors");
 // redirected client side to run on server
 const path = require("path");
 const _dirname = path.dirname("");
-const buildPath = path.join(_dirname, "../client/build");
+const buildPath = path.join(_dirname, "../client/build/index.html");
 
 app.use(express.static(buildPath));
 
