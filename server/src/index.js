@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const { CLIENT_URL } = require("./constants");
+const { CLIENT_URL, PORT } = require("./constants");
 const authRoutes = require("./routes/auth");
 const cookieparser = require("cookie-parser");
 const passport = require("passport");
@@ -38,8 +38,8 @@ app.use("/api", authRoutes);
 
 const appStart = () => {
   try {
-    app.listen(8000, () => {
-      console.log(`App running at http://localhost:8000`);
+    app.listen(PORT, () => {
+      console.log(`App running on port ${PORT}`);
     });
   } catch (error) {
     console.log(`Error: ${error.message}`);
