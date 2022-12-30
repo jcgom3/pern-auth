@@ -19,7 +19,8 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const { data } = await onRegistration(values);
+     
+      const { data } = await onRegistration(values); 
       setError("");
       setSuccess(data.message);
       setValues({ email: "", password: "" });
