@@ -46,6 +46,7 @@ const Register = () => {
             value={values.email}
             placeholder="Email"
             required
+            autoComplete="on"
           />
         </div>
 
@@ -62,6 +63,7 @@ const Register = () => {
             name="password"
             placeholder="passwod"
             required
+            autoComplete="off"
           />
         </div>
 

@@ -30,10 +30,9 @@ const Login = () => {
     }
   };
 
-  console.log(values);
   return (
     <Layout>
-      <form onSubmit={(e) => onSubmit(e)} className="container mt-3">
+      <form onSubmit={(e) => onSubmit(e)} className="container mt-3" autoComplete="on">
         <h1>Login</h1>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
@@ -48,6 +47,7 @@ const Login = () => {
             value={values.email}
             placeholder="Email"
             required
+            autoComplete="on"
           />
         </div>
 
@@ -64,6 +64,7 @@ const Login = () => {
             name="password"
             placeholder="passwod"
             required
+            autoComplete="on"
           />
         </div>
 
