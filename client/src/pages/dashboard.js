@@ -24,7 +24,7 @@ export const Dashboard = () => {
     try {
       const { data } = await onFetchProtectedInfo();
 
-      // setProtectedData(data.info);
+      // setProtectedData(data.info) ;
 
       setLoading(false);
     } catch (error) {
@@ -45,7 +45,22 @@ export const Dashboard = () => {
       <Layout>
         <h1>Dashboard</h1>
 
-        <h2 className="mt-5">Place content for authenticated user here...</h2>
+        <div className="d-flex flex-column justify-content-center">
+          <h2 className="mt-5 mx-auto">
+            You're authorized to see protected data below...
+          </h2>
+          <div className="mt-5 mx-auto">
+            <iframe
+              className="mt-5"
+              src="https://giphy.com/embed/QjSoXOQIcEXBu"
+              width="480"
+              height="480"
+              frameBorder="0"
+              class="giphy-embed"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
       </Layout>
     </div>
   );

@@ -1,45 +1,34 @@
 const express = require("express");
 const app = express();
-const { CLIENT_URL, PORT } = require("./constants");
-const authRoutes = require("./routes/auth");
-const cookieparser = require("cookie-parser");
+const { PORT, CLIENT_URL } = require("./constants");
+const cookieParser = require("cookie-parser");
 const passport = require("passport");
 const cors = require("cors");
+const morgan = require("morgan");
 
-// redirected client side to run on server
-// const path = require("path");
-// const _dirname = path.dirname("");
-// const buildPath = path.join(_dirname, "../client/build/");
-
-// app.use(express.static(buildPath));
-
-// app.get("/*", function (req, res) {
-//   res.sendFile(
-//     path.join(__dirname, "../client/build/index.html"),
-//     function (err) {
-//       if (err) {
-//         res.status(500).send(err);
-//       }
-//     }
-//   );
-// });
-
-//
-
-// middleware init
-app.use(express.json());
-app.use(cookieparser());
-app.use(cors({ origin: CLIENT_URL, credentials: true }));
+//import passport middleware
 require("./middlewares/passport-middleware");
+
+//initialize middlewares
+app.use(
+  morgan(":method :url :status :res[content-length] - :response-time ms")
+);
+app.use(express.json());
+app.use(cookieParser());
+app.use(cors({ origin: CLIENT_URL, credentials: true }));
 app.use(passport.initialize());
 
-// routes init
+//import routes
+const authRoutes = require("./routes/auth");
+
+//initialize routes
 app.use("/api", authRoutes);
 
+//app start
 const appStart = () => {
   try {
     app.listen(PORT, () => {
-      console.log(`App running on port ${PORT}`);
+      console.log(`The app is running at http://localhost:${PORT}`);
     });
   } catch (error) {
     console.log(`Error: ${error.message}`);
